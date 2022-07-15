@@ -58,3 +58,5 @@ gem 'net-pop'
 gem 'net-smtp'
 
 gem 'carrierwave'
+
+gem 'i18n_generators', '~> 2.2'
