@@ -142,6 +142,7 @@ ja:
     select:
       prompt: 選択してください
     submit:
+      new_book: 新規登録
       create: 登録する
       submit: 保存する
       update: 更新する
