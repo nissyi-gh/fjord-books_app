@@ -40,6 +40,12 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    confirm:
+      delete: 本当に削除しますか？
+    notice:
+      update: 本を更新しました。
+      delete: 本を削除しました。
+      create: 本を登録しました。
     select:
       prompt: 選択してください
     submit:

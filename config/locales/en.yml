@@ -1,5 +1,11 @@
 en:
   helpers:
+    confirm:
+      delete: Are you sure?
+    notice:
+      update: Book was successfully updated.
+      delete: Book was successfully destroyed.
+      create: Book was successfully created.
     submit:
       new_book: New Book
       create: Create
