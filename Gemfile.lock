@@ -275,7 +275,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   carrierwave
-  i18n_generators (~> 2.2)
+  i18n_generators
   jbuilder (~> 2.7)
   listen (~> 3.3)
   net-imap
