@@ -15,3 +15,7 @@ en:
       show: Show
       destroy: Destroy
       back: Back
+  pages:
+    title:
+      index: Books
+      edit: Editing Book
