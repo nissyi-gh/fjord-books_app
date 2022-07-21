@@ -20,5 +20,9 @@
 
 <div class="field">
   <%= f.label :avatar %>
+  <% if f.object.avatar.attached? %>
+    <%= image_tag f.object.avatar %>
+    <p>画像を設定中です</p>
+  <% end  %>
   <%= f.file_field :avatar %>
 </div>
