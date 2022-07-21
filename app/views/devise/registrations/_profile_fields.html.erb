@@ -24,5 +24,5 @@
     <%= image_tag f.object.avatar %>
     <p>画像を設定中です</p>
   <% end  %>
-  <%= f.file_field :avatar %>
+  <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>
 </div>
