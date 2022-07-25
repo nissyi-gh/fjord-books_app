@@ -35,12 +35,12 @@
 
 <p>
   <strong><%= User.human_attribute_name(:follow) %>:</strong>
-  0
+  <%= @user.followings.count %>
 </p>
 
 <p>
   <strong><%= User.human_attribute_name(:follower) %>:</strong>
-  0
+  <%= @user.followers.count %>
 </p>
 
 <% if current_user == @user %>
