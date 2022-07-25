@@ -34,13 +34,15 @@
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:follow) %>:</strong>
-  <%= @user.followings.count %>
+  <%= link_to do %>
+    <strong><%= User.human_attribute_name(:follow) %>:</strong> <%= @user.followings.count %>
+  <% end  %>
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:follower) %>:</strong>
-  <%= @user.followers.count %>
+  <%= link_to do %>
+    <strong><%= User.human_attribute_name(:follower) %>:</strong> <%= @user.followers.count %>
+  <% end  %>
 </p>
 
 <% if current_user == @user %>
