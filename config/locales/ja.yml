@@ -3,9 +3,9 @@ ja:
     confirm:
       delete: 本当に削除しますか？
     notice:
-      update: 本を更新しました。
-      delete: 本を削除しました。
-      create: 本を登録しました。
+      update: "%{model}を更新しました。"
+      delete: "%{model}を削除しました。"
+      create: "%{model}を登録しました。"
     submit:
       new_book: 新規登録
       create: 登録

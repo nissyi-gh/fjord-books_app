@@ -3,9 +3,9 @@ en:
     confirm:
       delete: Are you sure?
     notice:
-      update: Book was successfully updated.
-      delete: Book was successfully destroyed.
-      create: Book was successfully created.
+      update: "%{model} was successfully updated."
+      delete: "%{model} was successfully destroyed."
+      create: "%{model} was successfully created."
     submit:
       new_book: New Book
       create: Create
