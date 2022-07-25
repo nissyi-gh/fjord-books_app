@@ -1,0 +1,10 @@
+<h1><%= @user.name %>のフォロー一覧</h1>
+
+<% if @target_users.any? %>
+  <%= render 'follow_list' %>
+<% else %>
+  <p>誰もフォローしていません</p>
+<% end %>
+
+<%= link_to 'フォロワー一覧', followers_user_path %>
+<%= link_to t('views.common.back'), user_path %>
