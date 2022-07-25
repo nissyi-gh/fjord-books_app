@@ -35,5 +35,17 @@
 
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
+<% else %>
+    <% if current_user.followings.include?(@user) %>
+      <%= form_with url: follow_relationship_path, method: :delete do |form| %>
+        <%= form.hidden_field :target_id, value: @user.id %>
+        <%= form.button 'フォロー解除する' %>
+      <% end %>
+    <% else %>
+      <%= form_with url: follow_relationships_path do |form| %>
+        <%= form.hidden_field :target_id, value: @user.id %>
+        <%= form.submit 'フォローする' %>
+      <% end %>
+    <% end %>
 <% end %>
 <%= link_to t('views.common.back'), users_path %>
