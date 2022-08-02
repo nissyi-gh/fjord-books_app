@@ -1,0 +1,6 @@
+<%= render 'comments/form', comment: @comment, target_model: taget_model %>
+<% if comments.present? %>
+  <p>コメントあり</p>
+<% else %>
+  <p>コメントなし</p>
+<% end %>

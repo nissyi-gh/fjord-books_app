@@ -28,5 +28,6 @@
   <% end %>
 </p>
 
+<%= render 'comments/comments', comments: @comments, taget_model: @report %>
 <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
 <%= link_to t('views.common.back'), reports_path %>
