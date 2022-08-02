@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @comments = @report.comments
+    @comments = @report.comments.eager_load(:user)
     @comment = Comment.new
     @current_user = current_user
   end
