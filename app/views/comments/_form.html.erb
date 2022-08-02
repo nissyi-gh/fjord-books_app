@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
+    <%= form.label t('activerecord.attributes.comments.body') %>
+    <%= form.text_area :body, required: true, size: '40x4'  %>
   </div>
 
   <div class="actions">
