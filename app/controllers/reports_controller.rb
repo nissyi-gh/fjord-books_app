@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
+  before_action :set_report, only: %i[destroy]
+
   def index
     @reports = Report.order(:id).eager_load(:user).page(params[:page])
+    @current_user = current_user
   end
 
   def new
@@ -20,7 +23,17 @@ class ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    @report.destroy
+
+    redirect_to reports_path
+  end
+
   private
+
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
   def report_params
     params.require(:report).permit(:title, :body)
