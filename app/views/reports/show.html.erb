@@ -15,5 +15,13 @@
   <%= link_to(@report.user.name, @report.user) %>
 </p>
 
+<p>
+  <strong><%= User.human_attribute_name(:avatar) %>:</strong>
+  <% if @report.user.avatar.attached? %>
+    <br>
+    <%= image_tag @report.user.avatar.variant(resize_to_fill: [150, 150])%>
+  <% end %>
+</p>
+
 <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
 <%= link_to t('views.common.back'), reports_path %>
