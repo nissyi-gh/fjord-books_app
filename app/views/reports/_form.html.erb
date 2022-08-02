@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
+    <%= form.text_field :title, required: true, size: 40 %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_field :body, required: true %>
+    <%= form.text_area :body, required: true, size: '40x4' %>
   </div>
 
   <div class="actions">
