@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show destroy update edit]
 
@@ -26,8 +28,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @report.update(report_params)
