@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[destroy]
+  before_action :set_report, only: %i[show destroy]
 
   def index
     @reports = Report.order(:id).eager_load(:user).page(params[:page])
