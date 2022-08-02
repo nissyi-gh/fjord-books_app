@@ -1,0 +1,25 @@
+<% if reports.present? %>
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th><%= Report.human_attribute_name(:title) %></th>
+      <th><%= Report.human_attribute_name(:content) %></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% reports.each do |report| %>
+      <tr>
+        <th>
+        </th>
+        <td><%= report.title %></td>
+        <td><%= report.content %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p><%= t('activerecord.errors.messages.not_exist', model: t('activerecord.models.report'))  %></p>
+<% end %>
