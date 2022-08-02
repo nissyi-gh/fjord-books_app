@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show destroy]
+  before_action :set_report, only: %i[show destroy update edit]
 
   def index
     @reports = Report.order(:id).eager_load(:user).page(params[:page])
@@ -20,6 +20,17 @@ class ReportsController < ApplicationController
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @report.update(report_params)
+      redirect_to reports_url, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit
     end
   end
 
