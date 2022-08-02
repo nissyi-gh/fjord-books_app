@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
   def show
     @comments = @report.comments
     @comment = Comment.new
+    @current_user = current_user
   end
 
   def create

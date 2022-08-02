@@ -20,6 +20,6 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= render 'comments/comments', comments: @comments, taget_model: @book %>
+<%= render 'comments/comments', comments: @comments, target_model: @book %>
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>

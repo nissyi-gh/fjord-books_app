@@ -1,4 +1,4 @@
-<%= render 'comments/form', comment: @comment, target_model: taget_model %>
+<%= render 'comments/form', comment: @comment, target_model: target_model %>
 <% if comments.present? %>
   <ol>
     <% comments.each do |comment| %>
@@ -6,6 +6,9 @@
         <%= comment.body %>
         <%= comment.user.name %>
         <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+        <% if comment.user == @current_user  %>
+          <%= link_to t('views.common.destroy'), url: polymorphic_url([target_model, @comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+        <% end %>
       </li>
     <% end %>
   </ol>
