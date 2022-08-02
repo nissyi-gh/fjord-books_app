@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show destroy update edit]
 
   def index
-    @reports = Report.order(:id).eager_load(:user).page(params[:page])
+    @reports = Report.order(:id).eager_load(:user).page(params[:page]).includes(user: { avatar_attachment: :blob })
     @current_user = current_user
   end
 
