@@ -5,6 +5,7 @@
       <th></th>
       <th><%= Report.human_attribute_name(:title) %></th>
       <th><%= Report.human_attribute_name(:content) %></th>
+      <th><%= User.model_name.human %></th>
       <th></th>
     </tr>
     </thead>
@@ -16,6 +17,7 @@
         </th>
         <td><%= report.title %></td>
         <td><%= report.body %></td>
+        <td><%= report.user.name %></td>
       </tr>
     <% end %>
     </tbody>

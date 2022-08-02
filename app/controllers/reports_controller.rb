@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   def index
-    @reports = Report.order(:id).page(params[:page])
+    @reports = Report.order(:id).eager_load(:user).page(params[:page])
   end
 
   def new
