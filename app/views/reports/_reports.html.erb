@@ -19,7 +19,13 @@
             <%= image_tag report.user.avatar.variant(resize_to_fill: [30, 30])%>
           <% end %>
         </th>
-        <td><%= report.user.name %></td>
+        <td>
+          <% if report.user.name.present? %>
+            <%= report.user.name %>
+          <% else %>
+            <%= report.user.email %>
+          <% end %>
+        </td>
         <td><%= report.title %></td>
         <td><%= report.body %></td>
         <td><%= report.created_at.strftime("%Y/%m/%d") %></td>
