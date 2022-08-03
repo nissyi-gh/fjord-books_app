@@ -7,16 +7,17 @@ class CommentsController < ApplicationController
     @comment = @target.comments.new(body: params[:body], user_id: current_user.id)
 
     if @comment.save
-      redirect_to @target
-    else
-      render @target
+      redirect_to @target, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
 
-    redirect_to @target
+    if current_user?(comment.user)
+      comment.destroy
+      redirect_to @target, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    end
   end
 
   private
