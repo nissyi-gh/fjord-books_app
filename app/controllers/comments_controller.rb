@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = @target.comments.new(body: params[:body], user_id: current_user.id)
 
     if @comment.save
-      redirect_to @target, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+      redirect_to @target, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     end
   end
 
