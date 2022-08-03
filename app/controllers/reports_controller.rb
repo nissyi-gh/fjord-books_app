@@ -28,10 +28,12 @@ class ReportsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    redirect_to reports_path unless current_user?(@report.user)
+  end
 
   def update
-    if @report.update(report_params)
+    if current_user?(@report.user) && @report.update(report_params)
       redirect_to reports_url, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit
@@ -39,9 +41,13 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    @report.destroy
+    if current_user?(@report.user)
+      @report.destroy
 
-    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+    else
+      render :index
+    end
   end
 
   private
