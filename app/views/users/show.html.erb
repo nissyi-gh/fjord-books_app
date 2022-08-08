@@ -51,12 +51,12 @@
     <% if current_user.followings.include?(@user) %>
       <%= form_with url: follow_relationship_path, method: :delete do |form| %>
         <%= form.hidden_field :target_id, value: @user.id %>
-        <%= form.button 'フォロー解除する' %>
+        <%= form.button t 'views.common.un_follow' %>
       <% end %>
     <% else %>
       <%= form_with url: follow_relationships_path do |form| %>
         <%= form.hidden_field :target_id, value: @user.id %>
-        <%= form.submit 'フォローする' %>
+        <%= form.submit t 'views.common.follow' %>
       <% end %>
     <% end %>
 <% end %>

@@ -220,6 +220,8 @@ ja:
       minimum_length: "%{length}文字以上"
       followings: "%{user}のフォロー一覧"
       followers: "%{user}のフォロワー一覧"
+      follow: 'フォローする'
+      un_follow: 'フォロー解除する'
       no_followings: フォローしていません
       no_followers: フォロワーがいません
     pagination:
