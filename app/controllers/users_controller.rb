@@ -11,11 +11,11 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @target_users = @user.followings.page(params[:page])
+    @target_users = @user.followings.with_attached_avatar.order(:id).page(params[:page])
   end
 
   def followers
     @user = User.find(params[:id])
-    @target_users = @user.followers.page(params[:page])
+    @target_users = @user.followers.with_attached_avatar.order(:id).page(params[:page])
   end
 end
