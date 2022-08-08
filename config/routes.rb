@@ -9,5 +9,7 @@ Rails.application.routes.draw do
       get 'followers'
     end
   end
-  resources :follow_relationships, only: %i(create destroy)
+
+  post 'following_relationship/:target_id', to: 'follow_relationships#create', as: :follow
+  delete 'following_relationship/:target_id', to: 'follow_relationships#destroy', as: :un_follow
 end

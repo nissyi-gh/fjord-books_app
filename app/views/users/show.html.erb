@@ -49,13 +49,11 @@
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% else %>
     <% if current_user.followings.include?(@user) %>
-      <%= form_with url: follow_relationship_path, method: :delete do |form| %>
-        <%= form.hidden_field :target_id, value: @user.id %>
+      <%= form_with url: un_follow_path(@user), method: :delete do |form| %>
         <%= form.button t 'views.common.un_follow' %>
       <% end %>
     <% else %>
-      <%= form_with url: follow_relationships_path do |form| %>
-        <%= form.hidden_field :target_id, value: @user.id %>
+      <%= form_with url: follow_path(@user) do |form| %>
         <%= form.submit t 'views.common.follow' %>
       <% end %>
     <% end %>
