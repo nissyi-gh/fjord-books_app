@@ -6,9 +6,15 @@ class CommentsController < ApplicationController
   def create
     @comment = @target.comments.new(body: params[:body], user_id: current_user.id)
 
-    return unless @comment.save
-
-    redirect_to @target, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    if @comment.save
+      redirect_to @target, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    elsif @target.is_a?(Book)
+      @book = @target
+      render 'books/show'
+    else
+      @report = @target
+      render 'reports/show'
+    end
   end
 
   def destroy
