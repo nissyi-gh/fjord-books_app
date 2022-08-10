@@ -29,7 +29,7 @@
 </p>
 
 <%= render 'comments/comments', comments: @comments, target_model: @report %>
-<% if @report.user == @current_user %>
+<% if current_user?(@report.user) %>
   <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
 <% end %>
 <%= link_to t('views.common.back'), reports_path %>

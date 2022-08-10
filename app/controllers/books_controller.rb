@@ -14,7 +14,6 @@ class BooksController < ApplicationController
   def show
     @comments = @book.comments.eager_load(:user)
     @comment = Comment.new
-    @current_user = current_user
   end
 
   # GET /books/new

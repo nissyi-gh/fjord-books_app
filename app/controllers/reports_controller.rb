@@ -5,7 +5,6 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.order(:id).eager_load(:user).page(params[:page]).includes(user: { avatar_attachment: :blob })
-    @current_user = current_user
   end
 
   def new
@@ -15,7 +14,6 @@ class ReportsController < ApplicationController
   def show
     @comments = @report.comments.eager_load(:user)
     @comment = Comment.new
-    @current_user = current_user
   end
 
   def create
@@ -33,7 +31,9 @@ class ReportsController < ApplicationController
   end
 
   def update
-    if current_user?(@report.user) && @report.update(report_params)
+    @report = current_user.reports.find(params[:id])
+
+    if @report.update(report_params)
       redirect_to reports_url, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit
@@ -41,13 +41,9 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    if current_user?(@report.user)
-      @report.destroy
+    current_user.reports.find(params[:id]).destroy
 
-      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
-    else
-      render :index
-    end
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
