@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     member do
       get 'followings'
       get 'followers'
+      post 'follow_relationship', to: 'users#follow'
+      delete 'follow_relationship', to: 'users#un_follow'
     end
   end
-
-  post 'following_relationship/:target_id', to: 'follow_relationships#create', as: :follow
-  delete 'following_relationship/:target_id', to: 'follow_relationships#destroy', as: :un_follow
 end
