@@ -28,7 +28,7 @@
   <% end %>
 </p>
 
-<%= render 'comments/comments', comments: @comments, target_model: @report %>
+<%= render 'comments/comments', comments: @comments, target_model: @report, comment: @comment %>
 <% if current_user?(@report.user) %>
   <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
 <% end %>
