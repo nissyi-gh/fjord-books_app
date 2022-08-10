@@ -1,7 +1,4 @@
 <h1><%= Report.model_name.human %></h1>
 <%= render 'reports/reports', reports: @reports %>
 <%= paginate @reports %>
-
-<br>
-
 <%= link_to t('views.common.new'), new_report_path %>
