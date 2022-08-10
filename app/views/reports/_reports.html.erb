@@ -20,11 +20,7 @@
           <% end %>
         </th>
         <td>
-          <% if report.user.name.present? %>
-            <%= report.user.name %>
-          <% else %>
-            <%= report.user.email %>
-          <% end %>
+          <%= user_name_or_email(report.user) %>
         </td>
         <td><%= report.title %></td>
         <td><%= report.body %></td>
