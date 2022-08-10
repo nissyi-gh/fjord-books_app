@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     member do
       get 'followings'
       get 'followers'
+      post 'follow_relationships', to: 'users#follow'
+      delete 'follow_relationship', to: 'users#un_follow'
     end
-    resources :follow_relationships, only: %i(create destroy)
   end
 end
