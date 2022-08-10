@@ -5,7 +5,7 @@
       <li>
         <%= comment.body %>
         <%= user_name_or_email(comment.user) %>
-        <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+        <%= l comment.created_at, format: :long %>
         <% if current_user?(comment.user)  %>
           <%= link_to t('views.common.destroy'), polymorphic_url([target_model, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
         <% end %>
