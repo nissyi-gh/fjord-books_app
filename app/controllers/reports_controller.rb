@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show destroy update edit]
 
   def index
-    @reports = Report.order(:id).eager_load(:user).page(params[:page]).includes(user: { avatar_attachment: :blob })
+    @reports = Report.order(:id).preload(:user).page(params[:page]).includes(user: { avatar_attachment: :blob })
   end
 
   def new
@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @comments = @report.comments.eager_load(:user)
+    @comments = @report.comments.preload(:user)
     @comment = Comment.new
   end
 

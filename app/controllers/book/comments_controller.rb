@@ -7,7 +7,7 @@ class Book::CommentsController < ApplicationController
     if @comment.save
       redirect_to @book, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      @comments = @book.comments.eager_load(:user)
+      @comments = @book.comments.preload(:user)
       render 'books/show'
     end
   end

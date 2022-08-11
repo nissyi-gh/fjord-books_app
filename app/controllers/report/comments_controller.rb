@@ -7,7 +7,7 @@ class Report::CommentsController < ApplicationController
     if @comment.save
       redirect_to @report, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      @comments = @report.comments.eager_load(:user)
+      @comments = @report.comments.preload(:user)
       render 'reports/show'
     end
   end

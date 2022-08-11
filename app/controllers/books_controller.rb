@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @comments = @book.comments.eager_load(:user)
+    @comments = @book.comments.preload(:user)
     @comment = Comment.new
   end
 
