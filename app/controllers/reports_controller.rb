@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show destroy update edit]
 
   def index
-    @reports = Report.order(:id).preload(:user).page(params[:page]).includes(user: { avatar_attachment: :blob })
+    @reports = Report.order(:id).includes(user: { avatar_attachment: :blob }).page(params[:page])
   end
 
   def new
