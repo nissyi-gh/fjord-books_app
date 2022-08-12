@@ -32,6 +32,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_name_or_email(user)
-    user.name.present? ? user.name : user.email
+    user.name.presence || user.email
   end
 end
