@@ -3,7 +3,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :current_user?, :user_name_or_email
 
   protected
 
@@ -25,13 +24,5 @@ class ApplicationController < ActionController::Base
 
   def signed_in_root_path(_resource_or_scope)
     user_path(current_user)
-  end
-
-  def current_user?(user)
-    current_user == user
-  end
-
-  def user_name_or_email(user)
-    user.name.presence || user.email
   end
 end
