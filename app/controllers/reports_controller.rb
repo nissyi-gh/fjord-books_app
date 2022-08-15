@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show destroy update edit]
+  before_action :find_report_from_current_user, only: %i[destroy update edit]
 
   def index
     @reports = Report.order(:id).includes(user: { avatar_attachment: :blob }).page(params[:page])
@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @report = Report.find(params[:id])
     @comments = @report.comments.preload(:user)
     @comment = Comment.new
   end
@@ -26,13 +27,9 @@ class ReportsController < ApplicationController
     end
   end
 
-  def edit
-    @report = current_user.reports.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @report = current_user.reports.find(params[:id])
-
     if @report.update(report_params)
       redirect_to reports_url, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
@@ -41,15 +38,15 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    current_user.reports.find(params[:id]).destroy
+    @report.destroy
 
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
 
-  def set_report
-    @report = Report.find(params[:id])
+  def find_report_from_current_user
+    @report = current_user.reports.find(params[:id])
   end
 
   def report_params
