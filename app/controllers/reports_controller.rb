@@ -27,7 +27,7 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    redirect_to reports_path unless current_user?(@report.user)
+    @report = current_user.reports.find(params[:id])
   end
 
   def update
